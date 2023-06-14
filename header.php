@@ -18,7 +18,7 @@
             <nav>
                 <div>
                     <a href="index.php">
-                        <h1>HOME</h1>
+                        <h1>HEY</h1>
                     </a>
                 </div>
                 <div class="navLinks">
