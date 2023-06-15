@@ -65,7 +65,7 @@ function uidExists($conn, $username, $email){
 }
 function createUser($conn, $name, $email, $username, $pwd){
 
-    $sql = 'INSERT INTO users (usersName, usersEmail, usersUID, usersPWD) values (?, ?, ?, ?);';
+    $sql = 'INSERT INTO users (usersName, usersEmail, usersUID, usersPWD, balanceCreated) values (?, ?, ?, ?, 0);';
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
         header("location:../signup.php?error=sqlFail");
@@ -114,6 +114,10 @@ function createUser($conn, $name, $email, $username, $pwd){
             session_start();
             $_SESSION["userId"] = $uidExists['usersID'];
             $_SESSION["useruid"] = $uidExists['usersUID'];
+            $_SESSION["useremail"] = $uidExists['usersEmail'];
+            $_SESSION["userName"] = $uidExists['usersName'];
+            $_SESSION["balanceCreated"] = $uidExists['balanceCreated'];
+
             header("location:../index.php");
             exit();
         }

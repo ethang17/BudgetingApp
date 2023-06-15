@@ -1,3 +1,9 @@
+/*
+Primary Color: 
+Second Color: #e7c100
+*/
+
+
 *{
     margin: 0;
     padding: 0;
@@ -10,6 +16,19 @@ nav{
     align-items: center;
     display: flex;
 
+}
+nav .Logo{
+    flex-direction: row;
+}
+nav h1{
+    float: right;
+    color: #03a52e;
+    margin: 0 10px;
+}
+.fa-solid{
+    font-size: 40px;
+    display: block;
+    color:#e7c100;
 }
 .navbar{
     background-color: #121212;
@@ -72,3 +91,38 @@ button{
 
     width: 40%;
 }
+/*INDEX*/
+.homeTitle{
+    text-align: center;
+    color: #121212;
+    font-size: 40px;
+    margin:10px;
+}
+.makeButton{
+    text-decoration: none;
+}
+.makeBudget{
+    width: fit-content;
+    text-align: center;
+    background-color: #03a52e;
+    color:white;
+    border: white solid 2px;
+    border-radius:5px;
+    padding: 10px 10px;
+    margin: 50px auto;
+}
+.makeBudget:hover{
+    width: fit-content;
+    text-align: center;
+    background-color: #03a52e;
+    color:#e7c100;
+    border: #e7c100 solid 2px;
+    border-radius:5px;
+    padding: 10px 10px;
+    margin: 50px auto;
+}
+.notMade{
+    text-align: center;
+    font-weight: 400;
+}
+
