@@ -1,5 +1,5 @@
 <?php
-
+/*SIGN IN AND LOGOUT*/
 function emptyInputSignup($name, $email, $username, $password, $repeatPWD){
     $result;
     if(empty($name) || empty($email) || empty($username) || empty($password) || empty($repeatPWD)){
@@ -99,7 +99,7 @@ function createUser($conn, $name, $email, $username, $pwd){
         $uidExists = uidExists($conn, $username, $username);
 
         if($uidExists === false){
-            header("location: ../login.php?errpr=wronLogin");
+            header("location: ../login.php?error=wronLogin");
             exit();
         }
 
@@ -122,3 +122,24 @@ function createUser($conn, $name, $email, $username, $pwd){
             exit();
         }
     }
+
+    /*MAKING BUDGET*/
+
+    function emptyFields($t, $c1, $p1, $c2, $p2, $c3, $p3){
+        if( empty($t) || empty($c1) || empty($c2) ||empty($c3) || empty($p1) ||empty($p2) || empty($p3)){
+            $result = true;
+        }
+        else{
+            $result = false;
+        }
+        return $result;
+    }
+    function hundredPercent($p1, $p2, $p3){
+        if(($p1 + $p2 + $p3) == 100){
+            $result = false;
+        }else{
+            $result = true;
+        }
+        return $result;
+    }
+

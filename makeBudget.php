@@ -31,7 +31,18 @@ include_once 'header.php'
 
 
         </form>
+        <?php
+            if(isset($_GET['error'])){
+                if($_GET['error'] == "emptyField"){
+                    echo"<p>Fill in all fields!</p>";
+                }
+                else if ($_GET['error']=='hundred'){
+                    echo '<p>Percentages must add up to 100%!</p>';
+                }
+            }
+            ?>
 </div>
+
 <?php
 include_once 'footer.php'
 ?>
