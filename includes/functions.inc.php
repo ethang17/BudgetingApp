@@ -142,4 +142,7 @@ function createUser($conn, $name, $email, $username, $pwd){
         }
         return $result;
     }
+    function createBudget($conn, $budgetArray){
+        
+    }
 

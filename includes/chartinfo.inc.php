@@ -19,7 +19,12 @@
         require_once 'dbh.inc.php';
         require_once 'functions.inc.php';
 
-
+        $budgetArray = [
+            [$catOne, $percOne, $colorOne],
+            [$catTwo, $percTwo, $colorTwo],
+            [$catThree, $percThree, $colorThree],
+        ];
+        
 
         if (emptyFields($totalBudget, $catOne, $percOne, $catTwo, $percTwo, $catThree, $percThree)){
             header('location:../makeBudget.php?error=emptyField');
@@ -28,10 +33,13 @@
         if(hundredPercent($percOne, $percTwo, $percThree)){
             header('location:../makeBudget.php?error=hundred');
             exit();
-        }else{
+        }
+
+        /*createBudgetPlane($conn, $budgetArray);*/
+
+
+    }else{
             header('location:../index.php');
             exit();
         }
-
-    }
 
