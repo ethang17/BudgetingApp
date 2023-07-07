@@ -24,6 +24,14 @@
             [$catTwo, $percTwo, $colorTwo],
             [$catThree, $percThree, $colorThree],
         ];
+        $budgetString = '';
+        foreach ($budgetArray as $set){
+            foreach ($set as $value){
+                $budgetString .= $value;
+                $budgetString .= '-';
+            }
+            $budgetString .= "^";
+        }
         
 
         if (emptyFields($totalBudget, $catOne, $percOne, $catTwo, $percTwo, $catThree, $percThree)){
@@ -35,7 +43,8 @@
             exit();
         }
 
-        /*createBudgetPlane($conn, $budgetArray);*/
+        createBudgetPlan($conn, $totalBudget, $budgetArray);
+        exit();
 
 
     }else{

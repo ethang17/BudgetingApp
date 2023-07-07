@@ -1,5 +1,6 @@
 <?php
 /*SIGN IN AND LOGOUT*/
+session_start();
 function emptyInputSignup($name, $email, $username, $password, $repeatPWD){
     $result;
     if(empty($name) || empty($email) || empty($username) || empty($password) || empty($repeatPWD)){
@@ -111,7 +112,7 @@ function createUser($conn, $name, $email, $username, $pwd){
             exit();
         }
         else if($checkPwd === true){
-            session_start();
+
             $_SESSION["userId"] = $uidExists['usersID'];
             $_SESSION["useruid"] = $uidExists['usersUID'];
             $_SESSION["useremail"] = $uidExists['usersEmail'];
@@ -142,7 +143,24 @@ function createUser($conn, $name, $email, $username, $pwd){
         }
         return $result;
     }
-    function createBudget($conn, $budgetArray){
+    function createBudgetPlan($conn, $totalBudget, $budgetArray){
+        $sql = 'INSERT INTO financialInfo (userID, balance, categories) values (?, ?, ?);';
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            header("location:../signup.php?error=sqlFail");
+            exit();  
+        }
+        mysqli_stmt_bind_param($stmt, 'sss', $_SESSION['userId'], $totalBudget, $budgetArray);
+        
+
+        mysqli_stmt_execute($stmt);
+    
+        mysqli_stmt_close($stmt);
+    
+        header("location:../index.php");
+        exit();  
         
     }
-
+    function getPlan(){[
+        
+    ]}
