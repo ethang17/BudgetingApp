@@ -157,6 +157,17 @@ function createUser($conn, $name, $email, $username, $pwd){
     
         mysqli_stmt_close($stmt);
     
+        $sql2 = 'UPDATE users SET balanceCreated = 1 WHERE usersID = (?)';
+        $statement = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($statement, $sql2)){
+            header("location:../signup.php?error=sqlFail");
+            exit();  
+        }
+        mysqli_stmt_bind_param($statement, 's', $_SESSION['userId']);
+        mysqli_stmt_execute($statement);
+    
+        mysqli_stmt_close($statement);
+
         header("location:../index.php");
         exit();  
         
