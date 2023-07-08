@@ -10,7 +10,7 @@ include_once 'header.php'
                     include_once 'NotSetUpHome.php';
                 }
                 else{
-                    include_once 'signedInHome.php';
+                    include_once 'home.php';
                 }
             }
             else{

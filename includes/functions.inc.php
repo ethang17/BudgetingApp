@@ -167,7 +167,7 @@ function createUser($conn, $name, $email, $username, $pwd){
         mysqli_stmt_execute($statement);
     
         mysqli_stmt_close($statement);
-
+        $_SESSION['balanceCreated'] = 1;
         header("location:../index.php");
         exit();  
         
