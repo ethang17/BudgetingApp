@@ -43,7 +43,7 @@
             exit();
         }
 
-        createBudgetPlan($conn, $totalBudget, $budgetArray);
+        createBudgetPlan($conn, $totalBudget, $budgetString);
         exit();
 
 
