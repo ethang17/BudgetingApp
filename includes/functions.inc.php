@@ -1,6 +1,9 @@
 <?php
 /*SIGN IN AND LOGOUT*/
-session_start();
+if(session_status() === 'PHP_SESSION_NONE' ){
+    session_start();
+}
+
 function emptyInputSignup($name, $email, $username, $password, $repeatPWD){
     $result;
     if(empty($name) || empty($email) || empty($username) || empty($password) || empty($repeatPWD)){
@@ -172,4 +175,19 @@ function createUser($conn, $name, $email, $username, $pwd){
         exit();  
         
     }
+/* Get chart info */
+    function getBudgetInfo($conn){
+        $sql = 'SELECT * FROM financialinfo WHERE userId = ?;';
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            header("location:../index.php");
+            exit();  
+        }
+        mysqli_stmt_bind_param($stmt, 's', $_SESSION['userId']);
+        mysqli_stmt_execute($stmt);
+        $resultsData = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($resultsData);
+        return $row;
 
+
+    }
