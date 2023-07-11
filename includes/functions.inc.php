@@ -1,9 +1,5 @@
 <?php
 /*SIGN IN AND LOGOUT*/
-if(session_status() === 'PHP_SESSION_NONE' ){
-    session_start();
-}
-
 function emptyInputSignup($name, $email, $username, $password, $repeatPWD){
     $result;
     if(empty($name) || empty($email) || empty($username) || empty($password) || empty($repeatPWD)){
@@ -100,6 +96,7 @@ function createUser($conn, $name, $email, $username, $pwd){
     }
 
     function loginUser($conn, $username, $pwd){
+        session_start();
         $uidExists = uidExists($conn, $username, $username);
 
         if($uidExists === false){
