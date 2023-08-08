@@ -6,6 +6,7 @@ include_once 'includes/chartSetup.inc.php';
 <div>
     <h1 class = "homeTitle">
         Hey <?php echo($_SESSION['userName']);?>!
+        
     </h1>
     <canvas id="goalChart" style="width:100%;max-width:600px"></canvas>
 </div>
@@ -14,7 +15,6 @@ include_once 'includes/chartSetup.inc.php';
 const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 const yValues = [55, 49, 44, 24, 15];
 const barColors = ["#FFEE12", "green","blue","orange","brown"];
-
 new Chart("goalChart", {
   type: "pie",
   data: {
@@ -28,7 +28,7 @@ new Chart("goalChart", {
     legend: {display: true},
     title: {
       display: true,
-      text: "Goal Budget"
+      text: "Goal Budget: $"+ <?php echo $_SESSION['budgetBalance'];?>,
     }
   }
 });
